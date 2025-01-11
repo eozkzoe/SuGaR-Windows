@@ -288,7 +288,7 @@ def refined_training(args):
     ply_path = os.path.join(source_path, "sparse\\0\\points3D.ply")
     
     CONSOLE.print("-----Parsed parameters-----")
-    CONSOLE.print("Source path:", source_path)
+    CONSOLE.print("Source /path:", source_path)
     CONSOLE.print("   > Content:", len(os.listdir(source_path)))
     CONSOLE.print("Gaussian Splatting checkpoint path:", gs_checkpoint_path)
     CONSOLE.print("   > Content:", len(os.listdir(gs_checkpoint_path)))

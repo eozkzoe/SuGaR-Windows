@@ -230,10 +230,10 @@ def coarse_training_with_density_regularization(args):
     # ====================End of parameters====================
 
     if args.output_dir is None:
-        if len(args.scene_path.split("/")[-1]) > 0:
-            args.output_dir = os.path.join("./output/coarse", args.scene_path.split("/")[-1])
+        if len(args.scene_path.split("\\")[-1]) > 0:
+            args.output_dir = os.path.join(".\\output\\coarse", args.scene_path.split("\\")[-1])
         else:
-            args.output_dir = os.path.join("./output/coarse", args.scene_path.split("/")[-2])
+            args.output_dir = os.path.join(".\\output\\coarse", args.scene_path.split("\\")[-2])
             
     source_path = args.scene_path
     gs_checkpoint_path = args.checkpoint_path
@@ -242,7 +242,7 @@ def coarse_training_with_density_regularization(args):
     sdf_estimation_factor = args.estimation_factor
     sdf_better_normal_factor = args.normal_factor
     
-    sugar_checkpoint_path = f'sugarcoarse_3Dgs{iteration_to_load}_densityestimXX_sdfnormYY/'
+    sugar_checkpoint_path = f'sugarcoarse_3Dgs{iteration_to_load}_densityestimXX_sdfnormYY\\'
     sugar_checkpoint_path = os.path.join(args.output_dir, sugar_checkpoint_path)
     sugar_checkpoint_path = sugar_checkpoint_path.replace(
         'XX', str(sdf_estimation_factor).replace('.', '')
@@ -253,7 +253,7 @@ def coarse_training_with_density_regularization(args):
     use_eval_split = args.eval
     use_white_background = args.white_background
     
-    ply_path = os.path.join(source_path, "sparse/0/points3D.ply")
+    ply_path = os.path.join(source_path, "sparse\\0\\points3D.ply")
     
     CONSOLE.print("-----Parsed parameters-----")
     CONSOLE.print("Source path:", source_path)
@@ -339,7 +339,7 @@ def coarse_training_with_density_regularization(args):
     
     # Mesh to bind to if needed  TODO
     if bind_to_surface_mesh:
-        surface_mesh_to_bind_full_path = os.path.join('./results/meshes/', surface_mesh_to_bind_path)
+        surface_mesh_to_bind_full_path = os.path.join('.\\results\\meshes\\', surface_mesh_to_bind_path)
         CONSOLE.print(f'\nLoading mesh to bind to: {surface_mesh_to_bind_full_path}...')
         o3d_mesh = o3d.io.read_triangle_mesh(surface_mesh_to_bind_full_path)
         CONSOLE.print("Mesh to bind to loaded.")

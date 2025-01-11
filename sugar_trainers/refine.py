@@ -230,10 +230,10 @@ def refined_training(args):
     # ====================End of parameters====================
 
     if args.output_dir is None:
-        if len(args.scene_path.split("/")[-1]) > 0:
-            args.output_dir = os.path.join("./output/refined", args.scene_path.split("/")[-1])
+        if len(args.scene_path.split("\\")[-1]) > 0:
+            args.output_dir = os.path.join(".\\output\\refined", args.scene_path.split("\\")[-1])
         else:
-            args.output_dir = os.path.join("./output/refined", args.scene_path.split("/")[-2])
+            args.output_dir = os.path.join(".\\output\\refined", args.scene_path.split("\\")[-2])
             
     # Bounding box
     if (args.bboxmin is None) or (args.bboxmin == 'None'):
@@ -260,7 +260,7 @@ def refined_training(args):
     source_path = args.scene_path
     gs_checkpoint_path = args.checkpoint_path
     surface_mesh_to_bind_path = args.mesh_path
-    mesh_name = surface_mesh_to_bind_path.split("/")[-1].split(".")[0]
+    mesh_name = surface_mesh_to_bind_path.split("\\")[-1].split(".")[0]
     iteration_to_load = args.iteration_to_load    
     
     surface_mesh_normal_consistency_factor = args.normal_consistency_factor    
@@ -268,7 +268,7 @@ def refined_training(args):
     n_vertices_in_fg = args.n_vertices_in_fg
     num_iterations = args.refinement_iterations
     
-    sugar_checkpoint_path = 'sugarfine_' + mesh_name.replace('sugarmesh_', '') + '_normalconsistencyXX_gaussperfaceYY/'
+    sugar_checkpoint_path = 'sugarfine_' + mesh_name.replace('sugarmesh_', '') + '_normalconsistencyXX_gaussperfaceYY\\'
     sugar_checkpoint_path = os.path.join(args.output_dir, sugar_checkpoint_path)
     sugar_checkpoint_path = sugar_checkpoint_path.replace(
         'XX', str(surface_mesh_normal_consistency_factor).replace('.', '')
@@ -285,7 +285,7 @@ def refined_training(args):
     
     export_ply_at_the_end = args.export_ply
     
-    ply_path = os.path.join(source_path, "sparse/0/points3D.ply")
+    ply_path = os.path.join(source_path, "sparse\\0\\points3D.ply")
     
     CONSOLE.print("-----Parsed parameters-----")
     CONSOLE.print("Source path:", source_path)
